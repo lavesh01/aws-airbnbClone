@@ -49,7 +49,7 @@ async function uploadToS3(path, originalFilename, mimetype) {
 
 }
 
-app.post('/register', async (req, res) => {
+app.post('/api/register', async (req, res) => {
     mongoose.connect(process.env.MONGO_URL).then((e) => {
         console.log("MongoDB connected successfully!")
     }).catch(err => console.log(err));
@@ -68,7 +68,7 @@ app.post('/register', async (req, res) => {
     }
 });
 
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     mongoose.connect(process.env.MONGO_URL).then((e) => {
         console.log("MongoDB connected successfully!")
     }).catch(err => console.log(err));
@@ -98,7 +98,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.get('/profile', (req, res) => {
+app.get('/api/profile', (req, res) => {
     mongoose.connect(process.env.MONGO_URL).then((e) => {
         console.log("MongoDB connected successfully!")
     }).catch(err => console.log(err));
@@ -119,7 +119,7 @@ app.get('/profile', (req, res) => {
     }
 });
 
-app.post('/logout', (req, res) => {
+app.post('/api/logout', (req, res) => {
     try {
         res.cookie('token', '').json(true);
     } catch (error) {
@@ -127,7 +127,7 @@ app.post('/logout', (req, res) => {
     }
 });
 
-app.post('/upload-by-link', async (req, res) => {
+app.post('/api/upload-by-link', async (req, res) => {
     try {
         const { link } = req.body;
         const newName = 'photo' + Date.now() + '.jpg';
@@ -144,7 +144,7 @@ app.post('/upload-by-link', async (req, res) => {
 
 const photosMiddleware = multer({dest:'/tmp'});
 
-app.post('/upload', photosMiddleware.array('photos', 100) , async (req, res) => {
+app.post('/api/upload', photosMiddleware.array('photos', 100) , async (req, res) => {
     try {
         const uploadedFiles = [];
         for (let i = 0; i < req.files.length; i++) {
@@ -160,7 +160,7 @@ app.post('/upload', photosMiddleware.array('photos', 100) , async (req, res) => 
 });
 
 
-app.post('/places', async (req, res) => {
+app.post('/api/places', async (req, res) => {
     mongoose.connect(process.env.MONGO_URL).then((e) => {
         console.log("MongoDB connected successfully!")
     }).catch(err => console.log(err));
@@ -185,7 +185,7 @@ app.post('/places', async (req, res) => {
     }
 });
 
-app.put('/places', async (req, res) => {
+app.put('/api/places', async (req, res) => {
     mongoose.connect(process.env.MONGO_URL).then((e) => {
         console.log("MongoDB connected successfully!")
     }).catch(err => console.log(err));
@@ -213,7 +213,7 @@ app.put('/places', async (req, res) => {
     }
 });
 
-app.get('/user-places', async (req, res) => {
+app.get('/api/user-places', async (req, res) => {
     mongoose.connect(process.env.MONGO_URL).then((e) => {
         console.log("MongoDB connected successfully!")
     }).catch(err => console.log(err));
@@ -232,7 +232,7 @@ app.get('/user-places', async (req, res) => {
     }
 });
 
-app.get('/places/:id', async (req, res) => {
+app.get('/api/places/:id', async (req, res) => {
     mongoose.connect(process.env.MONGO_URL).then((e) => {
         console.log("MongoDB connected successfully!")
     }).catch(err => console.log(err));
@@ -246,7 +246,7 @@ app.get('/places/:id', async (req, res) => {
     }
 });
 
-app.get('/places', async (req, res) => {
+app.get('/api/places', async (req, res) => {
     mongoose.connect(process.env.MONGO_URL).then((e) => {
         console.log("MongoDB connected successfully!")
     }).catch(err => console.log(err));
@@ -258,7 +258,7 @@ app.get('/places', async (req, res) => {
     }
 });
 
-app.post('/bookings', async (req, res) => {
+app.post('/api/bookings', async (req, res) => {
     mongoose.connect(process.env.MONGO_URL).then((e) => {
         console.log("MongoDB connected successfully!")
     }).catch(err => console.log(err));
@@ -286,7 +286,7 @@ function getUserDataFromReq(req) {
     });
 }
 
-app.get('/bookings', async (req, res) => {
+app.get('/api/bookings', async (req, res) => {
     mongoose.connect(process.env.MONGO_URL).then((e) => {
         console.log("MongoDB connected successfully!")
     }).catch(err => console.log(err));
