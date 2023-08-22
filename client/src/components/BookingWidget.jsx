@@ -48,33 +48,40 @@ export default function BookingWidget({place}){
                 <div className="text-2xl text-center">
                     Price: ₹{place.price} / per night
                 </div>
-                <div className="border rounded-2xl mt-4">
-                    <div className="flex">
-                        <div className="py-3 px-4">
-                            <label>Check in:</label>
-                            <input type="date" value={checkIn} onChange={(e) => setCheckIn(e.target.value)}/>
-                        </div>
-                        <div className="py-3 px-4 border-l">
-                            <label>Check out:</label>
-                            <input type="date" value={checkOut} onChange={(e) => setCheckOut(e.target.value)}/>
-                        </div>
-                    </div>
-                        
-                    <div className="py-3 px-4 border-t">
-                        <label>Number of guests:</label>
-                        <input type="number" value={numberOfGuests} onChange={(e) => setNumberOfGuests(e.target.value)}/>
-                    </div>
+                { user ?
+                    <>
+                        <div className="border rounded-2xl mt-4">
+                            <div className="flex">
+                                <div className="py-3 px-4">
+                                    <label>Check in:</label>
+                                    <input type="date" value={checkIn} onChange={(e) => setCheckIn(e.target.value)}/>
+                                </div>
+                                <div className="py-3 px-4 border-l">
+                                    <label>Check out:</label>
+                                    <input type="date" value={checkOut} onChange={(e) => setCheckOut(e.target.value)}/>
+                                </div>
+                            </div>
+                                
+                            <div className="py-3 px-4 border-t">
+                                <label>Number of guests:</label>
+                                <input type="number" value={numberOfGuests} onChange={(e) => setNumberOfGuests(e.target.value)}/>
+                            </div>
 
-                    {numberOfNights > 0 && (
-                       <div className="py-3 px-4 border-t">
-                            <label>Your full name:</label>
-                            <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-                       
-                            <label>Phone:</label>
-                            <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                            {numberOfNights > 0 && (
+                            <div className="py-3 px-4 border-t">
+                                    <label>Your full name:</label>
+                                    <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+                            
+                                    <label>Phone:</label>
+                                    <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                                </div> 
+                            )}
                         </div> 
-                    )}
-                </div> 
+                    </> :
+                    <>
+                        <div>Please login to Book a place!</div>
+                    </>
+                }
                 <button className="primary mt-4" onClick={handleBooking}>
                     Book this place
                     {numberOfNights > 0 && (
