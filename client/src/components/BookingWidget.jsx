@@ -79,7 +79,7 @@ export default function BookingWidget({place}){
                         </div> 
                     </> :
                     <>
-                        <div>Please login to Book a place!</div>
+                        <div className="text-center my-3">Please login to Book a place!</div>
                     </>
                 }
                 <button className="primary mt-4" onClick={handleBooking}>
