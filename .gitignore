@@ -1,6 +1,10 @@
 files.
 # dependencies
 /node_modules
+api/node_modules
+client/node_modules
+api/uploads
+api/uploads/*
 # testing
 /coverage
 # production

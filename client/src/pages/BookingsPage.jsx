@@ -13,11 +13,13 @@ export default function BookingsPage(){
         .then(res => setBookings(res.data))
         .catch(err => console.error(err));
     },[]);
-    
+
     return(
         <div>
             <AccountsNav />
             <div>
+                {bookings?.length === 0 && <div className="text-center">No bookings to show..</div>}
+                
                 {bookings?.length > 0 && bookings.map(booking => (
                     <Link to={`/account/bookings/${booking._id}`}  className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden mb-2">
                         <div className="w-48">

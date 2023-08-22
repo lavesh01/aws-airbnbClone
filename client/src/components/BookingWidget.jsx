@@ -36,6 +36,7 @@ export default function BookingWidget({place}){
                 setRedirect(`/account/bookings/${res.data._id}`)
             })
             .catch(err => console.error(err));
+        
     }
     
     if(redirect){

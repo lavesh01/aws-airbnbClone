@@ -12,7 +12,7 @@ export default function RegisterPage(){
         try{
             await axios.post('/register',{
                 name: name,
-                eamil: email,
+                email: email,
                 password: password
             })
             alert("Registration Succesfull!");

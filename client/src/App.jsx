@@ -15,7 +15,7 @@ import RegisterPage from './pages/RegisterPage'
 import { UserContextProvider } from './UserContext'
 import axios from 'axios'
 
-axios.defaults.baseURL= 'http://localhost:4000';
+axios.defaults.baseURL= import.meta.env.VITE_API_BASE_URL;
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -41,6 +41,6 @@ function App() {
     </>
   )
 }
-// 
+
 
 export default App
